@@ -2,6 +2,35 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+## Reflections
+The project aims to control the car through a curved road using PID Controller. The unity simulator provided by Udacity provides:
+*	The cross track error (cte : Distance between car and lane center)
+*	Speed
+*	Steering angle
+Data via local websocket.
+
+We can control the car by manually or automatically setting `steer_value` and `throttle` arguments. I have used PID controller to automatically control `steer_value`.
+
+### Describe the effect of the P, I, D component of the PID algorithm.
+
+**P in PID controller stands for Proportional**: This coefficient (K_p) controls the vehicle proportional to the cte. If the car is towards right, it will try to bring the car back to centre so as to reduce cte. When we use only Kp coefficient to control the car oscillates and not able to handle sharp turns, goes out of the lane.
+
+**D coefficient (K_d)** tries to reduce the change in cte (derivative of cte wrt time). This coefficient helps in reducing the oscillations and ensure that the vehicle makes changes smoothly.
+
+**I coefficient (K_I)** controls the total error, it is integrate coefficient, and it sums up all the errors. Its purpose is to ensure that total cte error stays low. This helps us in taking care of any systematic bias present in the system.
+
+
+### Initialization and Optimization of PID coefficients
+
+The most crucial step in PID controller is choosing the right values of PID coefficients. Initially, I decided to use the **Twiddle method** as described in Udacity Lectures  to tune the car, but the car would go off the road, making the optimization hard. Then, I decided to tune the PID coefficients manually based on [Ziegler–Nichols method]
+(https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method). 
+
+[The Oscillating Car](https://youtu.be/2sDTvcmIvcQ)
+
+Initially I set K_d and K_I zero, and reached a value for K_p s.t. the car oscillates around lane center(you can the see the video above), the rough period of oscillations was ~ 5 seconds.  Resulting K_I ~ 2.8,  once the two parameters were set I twiddled around with the value of K_d, initially starting with 0.105, it was observed that when it is high the car kept large oscillations and was almost moving in circle. So I reduced it by a factor of 10, achieving sufficient good results for 
+K_p = 0.14, K_d = 0.000105, K_I = 2.8
+
+[Final Parameters](https://youtu.be/vHmVpY6e2Og)
 
 ## Dependencies
 
