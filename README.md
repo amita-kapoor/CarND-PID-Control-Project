@@ -29,6 +29,7 @@ The most crucial step in PID controller is choosing the right values of PID coef
 Initially I set K_d and K_I zero, and reached a value for K_p s.t. the car oscillates around lane center(you can the see the video above), the rough period of oscillations was ~ 5 seconds.  Resulting K_I ~ 2.8,  once the two parameters were set I twiddled around with the value of K_d, initially starting with 0.105, it was observed that when it is high the car kept large oscillations and was almost moving in circle. So I reduced it by a factor of 10, achieving sufficient good results for 
 K_p = 0.14, K_d = 0.000105, K_I = 2.8
 
+This link takws you to youTube video of car running with final PID parameters. 
 [Final Parameters](https://youtu.be/vHmVpY6e2Og)
 
 ## Dependencies
