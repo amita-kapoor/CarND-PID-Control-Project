@@ -22,8 +22,7 @@ We can control the car by manually or automatically setting `steer_value` and `t
 
 ### Initialization and Optimization of PID coefficients
 
-The most crucial step in PID controller is choosing the right values of PID coefficients. Initially, I decided to use the **Twiddle method** as described in Udacity Lectures  to tune the car, but the car would go off the road, making the optimization hard. Then, I decided to tune the PID coefficients manually based on [Ziegler–Nichols method]
-(https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method). 
+The most crucial step in PID controller is choosing the right values of PID coefficients. Initially, I decided to use the **Twiddle method** as described in Udacity Lectures  to tune the car, but the car would go off the road, making the optimization hard. Then, I decided to tune the PID coefficients manually based on [Ziegler–Nichols method](https://en.wikipedia.org/wiki/Ziegler%E2%80%93Nichols_method). 
 
 [The Oscillating Car](https://youtu.be/2sDTvcmIvcQ)
 
